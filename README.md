@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.ico" alt="The Ultron Logo" width="120" />
+  <img src="app/logo.png" alt="The Ultron Logo" width="120" />
   <h1>🤖 THE ULTRON</h1>
   <p><strong>Next-Gen Autonomous Robotic Tour Services</strong></p>
   
