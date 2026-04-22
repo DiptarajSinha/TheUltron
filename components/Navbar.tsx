@@ -338,7 +338,7 @@ export const Navbar = () => {
               </div>
               <h3 className="text-2xl font-playfair font-bold text-white mb-3">Sign Out?</h3>
               <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-                Are you sure you want to end your session? You'll need to sign back in to access your tickets.
+                Are you sure you want to end your session? You&apos;ll need to sign back in to access your tickets.
               </p>
               <div className="flex flex-col gap-3">
                 <button

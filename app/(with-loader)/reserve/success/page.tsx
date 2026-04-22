@@ -3,12 +3,10 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  CheckCircle2, 
   XCircle,
   Calendar, 
   MapPin, 
   Clock, 
-  User, 
   Mail, 
   Phone,
   Download,
@@ -95,7 +93,6 @@ export default function SuccessPage() {
   const [loading, setLoading] = React.useState(true);
   const ticketRef = React.useRef<HTMLDivElement>(null);
   const mapsLinkRef = React.useRef<HTMLAnchorElement>(null);
-  const [isDelivering, setIsDelivering] = React.useState(false);
   const deliveryProcessed = React.useRef(false);
   
   const isSuccess = booking?.status === "confirmed";
@@ -131,7 +128,7 @@ export default function SuccessPage() {
         }
 
         // Fallback: Fetch latest confirmed ticket from DB
-        const { data: latestTickets, error: dbError } = await supabase
+        const { data: latestTickets } = await supabase
           .from("tickets")
           .select("*")
           .eq("user_id", user.id)
@@ -159,7 +156,8 @@ export default function SuccessPage() {
       }
     };
 
-    const populateFromData = (data: any, user: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const populateFromData = (data: any, user: { id?: string; email?: string; user_metadata?: { name?: string; phone?: string } } | null) => {
       let formattedDate = data.date;
       try {
          // Handle both ISO strings and regular date strings
@@ -203,7 +201,6 @@ export default function SuccessPage() {
     if (booking && !deliveryProcessed.current && isSuccess) {
       deliveryProcessed.current = true;
       const processDelivery = async () => {
-        setIsDelivering(true);
         try {
           const hoursNum = parseInt(booking.duration);
           const costNum = parseInt(booking.price.replace("₹", ""));
@@ -227,8 +224,6 @@ export default function SuccessPage() {
           }
         } catch (error) {
           console.error("Delivery Error:", error);
-        } finally {
-          setIsDelivering(false);
         }
       };
       processDelivery();

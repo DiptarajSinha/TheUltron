@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, Lock, User as UserIcon, CheckCircle, ArrowRight, ArrowLeft, Eye, EyeOff, Sparkles } from "lucide-react";
+import { Mail, Lock, User as UserIcon, ArrowRight, ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 
@@ -197,12 +196,12 @@ export const LoginForm = ({ onToggle, onForgotPassword, onFocusField, onPassword
   );
 };
 
-export const RegisterForm = ({ onToggle, onFocusField, onPasswordVisibilityChange }: AuthProps) => {
+export const RegisterForm = ({ onToggle, onFocusField }: AuthProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [googleLoading, setGoogleLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -210,11 +209,7 @@ export const RegisterForm = ({ onToggle, onFocusField, onPasswordVisibilityChang
     confirmPassword: "",
   });
 
-  const togglePassword = () => {
-    const next = !showPassword;
-    setShowPassword(next);
-    onPasswordVisibilityChange?.(next);
-  };
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -321,7 +316,7 @@ export const RegisterForm = ({ onToggle, onFocusField, onPasswordVisibilityChang
               <Input
                 id="reg-password"
                 name="password"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={handleChange}
@@ -339,7 +334,7 @@ export const RegisterForm = ({ onToggle, onFocusField, onPasswordVisibilityChang
               <Input
                 id="reg-confirm"
                 name="confirmPassword"
-                type={showPassword ? "text" : "password"}
+                type="password"
                 placeholder="••••••••"
                 value={formData.confirmPassword}
                 onChange={handleChange}

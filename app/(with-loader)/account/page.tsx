@@ -20,8 +20,8 @@ import {
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { format, parseISO } from "date-fns";
 import { SignOutOverlay } from "@/components/SignOutOverlay";
+import { User } from "@supabase/supabase-js";
 
 interface TicketData {
   id: string;
@@ -33,7 +33,7 @@ interface TicketData {
 
 export default function AccountPage() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState(false);
   const [tickets, setTickets] = useState<TicketData[]>([]);

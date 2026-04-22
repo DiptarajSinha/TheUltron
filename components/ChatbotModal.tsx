@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
-  Send,
   Mic,
   MicOff,
   Volume2,
@@ -31,7 +30,7 @@ import { sendTicket } from "@/app/actions/sendTicket";
 const formatDate = (dateStr: string) => {
   try {
     return format(parseISO(dateStr), "dd-MM-yyyy");
-  } catch (e) {
+  } catch {
     return dateStr;
   }
 };
@@ -485,7 +484,7 @@ export const ChatbotModal = ({ isOpen, onClose }: ChatbotModalProps) => {
     await new Promise((r) => setTimeout(r, 500));
     setIsLoading(false);
 
-    let nextDraft = { ...fsmDraft };
+    const nextDraft = { ...fsmDraft };
     const getBaseSuggestions = () => ["Cancel Booking"];
 
     // Check if past 3 PM for date handling below
@@ -581,7 +580,7 @@ export const ChatbotModal = ({ isOpen, onClose }: ChatbotModalProps) => {
          } else {
              setFsmState("CONFIRMATION");
              const totalCost = (nextDraft.hours! * 200) + 600;
-             addBotMessage(`Date updated! Here is your new summary:\n* Date: ${formatDate(nextDraft.date!)}\n* Location: ${nextDraft.location}\n* Duration: ${nextDraft.hours} hour(s)\n* Attractions: ${nextDraft.attractions.map((a: any)=>a.name).join(", ")}\n\nThe cost will be ₹${nextDraft.hours! * 200} for ${nextDraft.hours} hour(s), plus a ₹600 refundable security deposit (Total: ₹${totalCost}).`, "text", undefined, ["Yes, Proceed", "Update Location", "Update Date", "Update Hours", "Cancel Booking"]);
+             addBotMessage(`Date updated! Here is your new summary:\n* Date: ${formatDate(nextDraft.date!)}\n* Location: ${nextDraft.location}\n* Duration: ${nextDraft.hours} hour(s)\n* Attractions: ${nextDraft.attractions.map((a: { name: string })=>a.name).join(", ")}\n\nThe cost will be ₹${nextDraft.hours! * 200} for ${nextDraft.hours} hour(s), plus a ₹600 refundable security deposit (Total: ₹${totalCost}).`, "text", undefined, ["Yes, Proceed", "Update Location", "Update Date", "Update Hours", "Cancel Booking"]);
          }
          break;
       }
@@ -618,7 +617,7 @@ export const ChatbotModal = ({ isOpen, onClose }: ChatbotModalProps) => {
          } else {
              setFsmState("CONFIRMATION");
              const totalCost = (nextDraft.hours! * 200) + 600;
-             addBotMessage(`Location updated! Here is your new summary:\n* Date: ${formatDate(nextDraft.date!)}\n* Location: ${nextDraft.location}\n* Duration: ${nextDraft.hours} hour(s)\n* Attractions: ${nextDraft.attractions.map((a: any)=>a.name).join(", ")}\n\nThe cost will be ₹${nextDraft.hours! * 200} for ${nextDraft.hours} hour(s), plus a ₹600 refundable security deposit (Total: ₹${totalCost}).`, "text", undefined, ["Yes, Proceed", "Update Location", "Update Date", "Update Hours", "Cancel Booking"]);
+             addBotMessage(`Location updated! Here is your new summary:\n* Date: ${formatDate(nextDraft.date!)}\n* Location: ${nextDraft.location}\n* Duration: ${nextDraft.hours} hour(s)\n* Attractions: ${nextDraft.attractions.map((a: { name: string })=>a.name).join(", ")}\n\nThe cost will be ₹${nextDraft.hours! * 200} for ${nextDraft.hours} hour(s), plus a ₹600 refundable security deposit (Total: ₹${totalCost}).`, "text", undefined, ["Yes, Proceed", "Update Location", "Update Date", "Update Hours", "Cancel Booking"]);
          }
          break;
       }

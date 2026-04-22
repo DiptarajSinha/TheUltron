@@ -135,7 +135,7 @@ export const RobotScrollAnimation = () => {
     resizeCanvas();
 
     return () => window.removeEventListener("resize", resizeCanvas);
-  }, [initialLoad]);
+  }, [initialLoad, scrollYProgress]);
 
   useEffect(() => {
     let ticking = false;
@@ -151,7 +151,7 @@ export const RobotScrollAnimation = () => {
     });
 
     return () => unsubscribe();
-  }, [initialLoad]);
+  }, [initialLoad, scrollYProgress]);
 
   return (
     <section ref={containerRef} className="relative h-[400vh] bg-black">

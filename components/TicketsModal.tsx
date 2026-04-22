@@ -2,11 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  X, Ticket, Calendar, MapPin, Clock, ChevronRight, Activity, 
-  History, ArrowLeft, Download, QrCode, CheckCircle2, XCircle, 
-  Info, ArrowRight, Loader2, Navigation, Map as MapIcon 
-} from "lucide-react";
+import { X, Ticket, Calendar, MapPin, Clock, ChevronRight, Activity, History, ArrowLeft, Download, QrCode, CheckCircle2, XCircle, Info, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { format, isPast, parseISO } from "date-fns";
 import { QRCodeCanvas } from "qrcode.react";

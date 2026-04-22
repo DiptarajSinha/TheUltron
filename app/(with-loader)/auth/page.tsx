@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoginForm, RegisterForm, ForgotPasswordForm } from "@/components/AuthComponents";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { AnimatedCharacters } from "@/components/AnimatedCharacters";
 import Link from "next/link";
 

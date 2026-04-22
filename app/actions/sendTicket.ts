@@ -43,7 +43,7 @@ export async function sendTicket(data: TicketData) {
     } else {
       parsedDate = parse(data.date, "dd-MM-yyyy", new Date());
     }
-  } catch (e) {
+  } catch {
     parsedDate = new Date(data.date);
   }
   
@@ -119,9 +119,11 @@ export async function sendTicket(data: TicketData) {
     for (let i = 0; i < 40; i++) {
         const opacity = 0.15 * (1 - i / 40);
         doc.setFillColor(74, 144, 226); 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         doc.setGState(new (doc as any).GState({ opacity: opacity }));
         doc.rect(0, i, width, 1, "F");
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     doc.setGState(new (doc as any).GState({ opacity: 1 }));
 
     // Header - Brand
