@@ -37,7 +37,7 @@ The Ultron features a dual-mode hardware control interface accessible via the we
 
 ### 📹 The Ultron in Action
 
-https://github.com/DiptarajSinha/TheUltron/raw/main/docs/assets/working.mp4
+[Watch The Ultron in action (Google Drive)](https://drive.google.com/file/d/1G1IpBithWRT4N6wtCkds5zGEDC5yRwkf/view?usp=sharing)
 
 ## 🛠️ Technology Stack
 
