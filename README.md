@@ -26,6 +26,21 @@ Our application serves as the primary gateway for users to interact with **Frida
 *   **🔒 Enterprise-Grade Security:** Powered by Supabase Auth and Row Level Security (RLS) to ensure customer data is strictly protected.
 *   **✨ Immersive UI:** A stunning, dark-mode-first interface featuring 3D Spline integrations and smooth Framer Motion animations.
 
+## 🎮 Hardware Robot Control Web UI
+
+The Ultron features a dual-mode hardware control interface accessible via the web, allowing administrators to seamlessly switch between manual overrides and fully autonomous navigation.
+
+| Manual Mode | Autonomous Mode |
+| :---: | :---: |
+| <img src="./docs/assets/manual.jpg" alt="Manual Mode" width="400" /> | <img src="./docs/assets/autonomous.jpg" alt="Autonomous Mode" width="400" /> |
+| *Direct joystick and override controls for manual navigation* | *Status dashboard monitoring pathfinding and automated triggers* |
+
+### 📹 The Ultron in Action
+
+<video src="./docs/assets/working.mp4" controls="controls" muted="muted" style="max-width: 100%;">
+  Your browser does not support the video tag.
+</video>
+
 ## 🛠️ Technology Stack
 
 *   **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
